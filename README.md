@@ -6,6 +6,8 @@ Multi-model AI research assistant — automated paper analysis, code generation,
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Models](https://img.shields.io/badge/models-8+-orange)
 
+🔗 **Live Demo:** https://akta10.github.io/ai-research-hub/
+
 ## Overview
 
 AI Research Hub is a multi-model AI research tool that automates paper analysis, code generation, knowledge graph construction, and cross-model evaluation. The system consumes approximately **150 million tokens daily** across Claude, GPT, Gemini, MiMo, DeepSeek, Qwen, and more — 8 models from 6 providers working in concert.

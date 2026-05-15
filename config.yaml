@@ -52,7 +52,7 @@ models:
           cost_per_1k_input: 0.001
           cost_per_1k_output: 0.004
           max_tokens: 128000
-          use_case: "Reasoning, math, coding"
+          use_case: "Reasoning, math, coding — primary research model"
 
     - name: deepseek
       models:
@@ -78,8 +78,8 @@ routing:
     - openai
     - google
   task_type_mapping:
-    analysis: [anthropic, openai]
-    code_generation: [openai, anthropic]
+    analysis: [anthropic, xiaomi, openai]
+    code_generation: [xiaomi, openai, anthropic]
     chinese: [deepseek, alibaba]
     multimodal: [google, openai]
     reasoning: [xiaomi, anthropic]

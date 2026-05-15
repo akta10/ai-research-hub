@@ -37,7 +37,7 @@ print(result.key_findings)
 ```python
 from src.analyzers.code_generator import CodeGenerator
 
-generator = CodeGenerator(model="gpt-4o")
+generator = CodeGenerator(model="mimo-v2.5-pro")
 code = generator.generate(
     prompt="Implement a Transformer-based time series forecasting model",
     language="python",
@@ -75,9 +75,10 @@ result = router.route(
 
 1. Use Claude Haiku for simple tasks — 10x cheaper than Sonnet
 2. Use GPT-4o-mini for lightweight tasks — 60x cheaper than GPT-4o
-3. Batch papers together to reduce per-request overhead
-4. Cache results for repeated queries
-5. Use the tracker to identify cost hotspots
+3. Use MiMo v2.5 Pro for reasoning — best quality-to-cost ratio for complex tasks
+4. Batch papers together to reduce per-request overhead
+5. Cache results for repeated queries
+6. Use the tracker to identify cost hotspots
 
 ## Usage Statistics
 
@@ -85,6 +86,6 @@ The system processes approximately 150 million tokens daily:
 
 - **Input tokens:** ~100M/day (paper content, prompts, context)
 - **Output tokens:** ~50M/day (summaries, code, analysis)
-- **Monthly total:** ~4.5B tokens
-- **Tasks per day:** ~3,000
-- **Avg tokens per task:** ~50,000
+- **Monthly total:** ~3B tokens (partial month)
+- **Tasks per day:** ~1,500
+- **Avg tokens per task:** ~100,000

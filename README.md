@@ -8,7 +8,9 @@ Multi-model AI research assistant — automated paper analysis, code generation,
 
 ## Overview
 
-AI Research Hub is a multi-model AI research tool that automates paper analysis, code generation, knowledge graph construction, and cross-model evaluation. The system consumes approximately **150 million tokens daily**, covering Claude, GPT, Gemini, MiMo, DeepSeek, Qwen, and more.
+AI Research Hub is a multi-model AI research tool that automates paper analysis, code generation, knowledge graph construction, and cross-model evaluation. The system consumes approximately **150 million tokens daily** across Claude, GPT, Gemini, MiMo, DeepSeek, Qwen, and more — 8 models from 6 providers working in concert.
+
+MiMo v2.5 Pro is a core reasoning model in the pipeline, handling complex analysis, mathematical reasoning, and code generation tasks. The project is actively expanding MiMo usage to replace more expensive proprietary models while improving reasoning quality.
 
 ## Core Features
 
@@ -128,7 +130,7 @@ python -m src.analyzers.knowledge_graph --input papers/ --output graph.json
 | Month | Total Usage | Tasks | Avg/Task |
 |-------|-------------|-------|----------|
 | 2026-04 | 1.2B tokens | 2,400 | 500,000 |
-| 2026-05 | 6.0B tokens (as of 15th) | 12,000 | 500,000 |
+| 2026-05 | 3.0B tokens (as of 15th) | 6,000 | 500,000 |
 
 ## Use Cases
 

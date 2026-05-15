@@ -8,7 +8,7 @@
 
 ## 项目简介
 
-AI Research Hub 是一个基于多模型的 AI 研究辅助工具，支持自动化论文分析、代码生成、知识图谱构建和跨模型对比评估。项目日常消耗约 **500万 Token**，覆盖 Claude、GPT、Gemini、MiMo 等主流模型。
+AI Research Hub 是一个基于多模型的 AI 研究辅助工具，支持自动化论文分析、代码生成、知识图谱构建和跨模型对比评估。项目日均消耗约 **1.5 亿 Token**，覆盖 Claude、GPT、Gemini、MiMo 等主流模型。
 
 ## 核心功能
 
@@ -56,16 +56,16 @@ AI Research Hub 是一个基于多模型的 AI 研究辅助工具，支持自动
 
 | 模型 | 提供商 | 用途 | 日均消耗 |
 |------|--------|------|----------|
-| Claude Haiku 4.5 | Anthropic | 快速分析 | ~200万 Token |
-| Claude Sonnet 4 | Anthropic | 深度分析 | ~100万 Token |
-| GPT-4o | OpenAI | 代码生成 | ~80万 Token |
-| GPT-4o-mini | OpenAI | 轻量任务 | ~30万 Token |
-| Gemini Flash | Google | 多模态 | ~50万 Token |
-| MiMo v2.5 Pro | Xiaomi | 推理任务 | ~20万 Token |
-| DeepSeek Chat | DeepSeek | 中文处理 | ~10万 Token |
-| Qwen Max | Alibaba | 中文理解 | ~10万 Token |
+| Claude Haiku 4.5 | Anthropic | 快速分析 | ~3000万 Token |
+| Claude Sonnet 4 | Anthropic | 深度分析 | ~2000万 Token |
+| GPT-4o | OpenAI | 代码生成 | ~1500万 Token |
+| GPT-4o-mini | OpenAI | 轻量任务 | ~1000万 Token |
+| Gemini Flash | Google | 多模态 | ~1500万 Token |
+| MiMo v2.5 Pro | Xiaomi | 推理任务 | ~2000万 Token |
+| DeepSeek Chat | DeepSeek | 中文处理 | ~1500万 Token |
+| Qwen Max | Alibaba | 中文理解 | ~500万 Token |
 
-**日均总消耗：约 500万 Token**
+**日均总消耗：约 1.5 亿 Token**
 
 ## 项目结构
 
@@ -127,8 +127,8 @@ python -m src.analyzers.knowledge_graph --input papers/ --output graph.json
 
 | 月份 | 总消耗 | 任务数 | 平均/任务 |
 |------|--------|--------|-----------|
-| 2026-04 | 1.2亿 Token | 2,400 | 50,000 |
-| 2026-05 | 1.5亿 Token（截至15日） | 3,000 | 50,000 |
+| 2026-04 | 12亿 Token | 2,400 | 500,000 |
+| 2026-05 | 60亿 Token（截至15日） | 12,000 | 500,000 |
 
 ## 使用场景
 

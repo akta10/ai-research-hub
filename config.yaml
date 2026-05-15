@@ -1,0 +1,49 @@
+# AI Research Hub — 配置文件
+
+# 模型配置
+models:
+  default: "claude-haiku"
+  fallback: "gemini-flash"
+  
+  providers:
+    anthropic:
+      api_key_env: "ANTHROPIC_API_KEY"
+      models: ["claude-haiku", "claude-sonnet"]
+    openai:
+      api_key_env: "OPENAI_API_KEY"
+      models: ["gpt-4o", "gpt-4o-mini"]
+    google:
+      api_key_env: "GOOGLE_API_KEY"
+      models: ["gemini-flash", "gemini-pro"]
+    xiaomi:
+      api_key_env: "XIAOMI_MIMO_API_KEY"
+      models: ["mimo-v2.5"]
+
+# 任务配置
+tasks:
+  paper_analysis:
+    preferred_model: "claude-sonnet"
+    max_tokens: 4000
+    temperature: 0.3
+  
+  code_generation:
+    preferred_model: "gpt-4o"
+    max_tokens: 8000
+    temperature: 0.7
+  
+  translation:
+    preferred_model: "gemini-flash"
+    max_tokens: 2000
+    temperature: 0.3
+
+# Token 限制
+limits:
+  max_daily_tokens: 10_000_000  # 1000万/天
+  max_monthly_tokens: 300_000_000  # 3亿/月
+  alert_threshold: 0.8  # 80% 时告警
+
+# 输出配置
+output:
+  directory: "output"
+  format: "markdown"
+  language: "zh"

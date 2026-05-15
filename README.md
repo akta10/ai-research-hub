@@ -1,49 +1,49 @@
 # AI Research Hub
 
-多模型 AI 研究助手 — 自动化论文分析、代码生成与知识综合
+Multi-model AI research assistant — automated paper analysis, code generation, and knowledge synthesis
 
 ![Python](https://img.shields.io/badge/python-3.12+-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Models](https://img.shields.io/badge/models-8+-orange)
 
-## 项目简介
+## Overview
 
-AI Research Hub 是一个基于多模型的 AI 研究辅助工具，支持自动化论文分析、代码生成、知识图谱构建和跨模型对比评估。项目日均消耗约 **1.5 亿 Token**，覆盖 Claude、GPT、Gemini、MiMo 等主流模型。
+AI Research Hub is a multi-model AI research tool that automates paper analysis, code generation, knowledge graph construction, and cross-model evaluation. The system consumes approximately **150 million tokens daily**, covering Claude, GPT, Gemini, MiMo, DeepSeek, Qwen, and more.
 
-## 核心功能
+## Core Features
 
-### 📄 论文自动分析
-- 输入 arXiv 论文链接，自动生成结构化摘要
-- 提取关键算法、实验结果和创新点
-- 支持批量处理，一次分析 10+ 篇论文
-- 自动翻译为中文并生成阅读笔记
+### 📄 Automated Paper Analysis
+- Input arXiv paper URLs, generate structured summaries automatically
+- Extract key algorithms, experimental results, and innovations
+- Batch processing: analyze 10+ papers in one run
+- Auto-translate to Chinese and generate reading notes
 
-### 💻 代码生成与审查
-- 基于论文描述自动生成可运行代码
-- 支持 Python、TypeScript、Solidity
-- 自动添加测试用例和文档
-- 代码质量评分与安全审查
+### 💻 Code Generation & Review
+- Generate runnable code from paper descriptions
+- Support Python, TypeScript, Solidity
+- Auto-add test cases and documentation
+- Code quality scoring and security review
 
-### 🔗 知识图谱构建
-- 从论文和文档中提取实体关系
-- 自动生成概念依赖图
-- 支持可视化展示和导出
-- 跨领域知识关联发现
+### 🔗 Knowledge Graph Construction
+- Extract entity relationships from papers and documents
+- Generate concept dependency graphs automatically
+- Support visualization and export
+- Cross-domain knowledge discovery
 
-### 📊 多模型对比评估
-- 同一任务在多个模型上运行
-- 比较输出质量、延迟和成本
-- 自动生成评估报告
-- 模型选型建议
+### 📊 Multi-Model Evaluation
+- Run the same task across multiple models
+- Compare output quality, latency, and cost
+- Auto-generate evaluation reports
+- Model selection recommendations
 
-## 技术架构
+## Architecture
 
 ```
 ┌─────────────────────────────────────┐
 │         Research Interface          │
 ├──────────┬──────────┬───────────────┤
-│  论文    │  代码    │  知识图谱     │
-│  分析    │  生成    │  构建         │
+│  Paper   │  Code    │  Knowledge    │
+│  Analysis│  Gen     │  Graph        │
 ├──────────┴──────────┴───────────────┤
 │        Multi-Model Router           │
 ├─────────┬─────────┬─────────────────┤
@@ -52,95 +52,95 @@ AI Research Hub 是一个基于多模型的 AI 研究辅助工具，支持自动
 └─────────┴─────────┴─────────────────┘
 ```
 
-## 支持的模型
+## Supported Models
 
-| 模型 | 提供商 | 用途 | 日均消耗 |
-|------|--------|------|----------|
-| Claude Haiku 4.5 | Anthropic | 快速分析 | ~3000万 Token |
-| Claude Sonnet 4 | Anthropic | 深度分析 | ~2000万 Token |
-| GPT-4o | OpenAI | 代码生成 | ~1500万 Token |
-| GPT-4o-mini | OpenAI | 轻量任务 | ~1000万 Token |
-| Gemini Flash | Google | 多模态 | ~1500万 Token |
-| MiMo v2.5 Pro | Xiaomi | 推理任务 | ~2000万 Token |
-| DeepSeek Chat | DeepSeek | 中文处理 | ~1500万 Token |
-| Qwen Max | Alibaba | 中文理解 | ~500万 Token |
+| Model | Provider | Use Case | Daily Usage |
+|-------|----------|----------|-------------|
+| Claude Haiku 4.5 | Anthropic | Fast analysis | ~30M tokens |
+| Claude Sonnet 4 | Anthropic | Deep analysis | ~20M tokens |
+| GPT-4o | OpenAI | Code generation | ~15M tokens |
+| GPT-4o-mini | OpenAI | Light tasks | ~10M tokens |
+| Gemini Flash | Google | Multimodal | ~15M tokens |
+| MiMo v2.5 Pro | Xiaomi | Reasoning | ~20M tokens |
+| DeepSeek Chat | DeepSeek | Chinese NLP | ~15M tokens |
+| Qwen Max | Alibaba | Chinese understanding | ~5M tokens |
 
-**日均总消耗：约 1.5 亿 Token**
+**Total daily consumption: ~150 million tokens**
 
-## 项目结构
+## Project Structure
 
 ```
 ai-research-hub/
 ├── src/
 │   ├── analyzers/
-│   │   ├── paper_analyzer.py      # 论文分析引擎
-│   │   ├── code_generator.py      # 代码生成器
-│   │   └── knowledge_graph.py     # 知识图谱构建
+│   │   ├── paper_analyzer.py      # Paper analysis engine
+│   │   ├── code_generator.py      # Code generator
+│   │   └── knowledge_graph.py     # Knowledge graph builder
 │   ├── models/
-│   │   ├── router.py              # 多模型路由
-│   │   ├── tracker.py             # Token 消耗追踪
-│   │   └── evaluator.py           # 模型评估
+│   │   ├── router.py              # Multi-model router
+│   │   ├── tracker.py             # Token consumption tracker
+│   │   └── evaluator.py           # Model evaluator
 │   ├── utils/
-│   │   ├── arxiv_client.py        # arXiv API 客户端
-│   │   ├── translator.py          # 自动翻译
-│   │   └── formatter.py           # 输出格式化
-│   └── config.py                  # 配置管理
+│   │   ├── arxiv_client.py        # arXiv API client
+│   │   ├── translator.py          # Auto-translation
+│   │   └── formatter.py           # Output formatter
+│   └── config.py                  # Configuration
 ├── notebooks/
-│   ├── paper_analysis_demo.ipynb  # 论文分析演示
-│   ├── code_gen_demo.ipynb        # 代码生成演示
-│   └── token_usage_report.ipynb   # Token 使用报告
+│   ├── paper_analysis_demo.ipynb  # Paper analysis demo
+│   ├── code_gen_demo.ipynb        # Code generation demo
+│   └── token_usage_report.ipynb   # Token usage report
 ├── tests/
 │   ├── test_analyzer.py
 │   ├── test_generator.py
 │   └── test_integration.py
 ├── docs/
-│   ├── usage_guide.md             # 使用指南
-│   ├── api_reference.md           # API 参考
-│   └── token_optimization.md      # Token 优化策略
+│   ├── usage_guide.md             # Usage guide
+│   ├── api_reference.md           # API reference
+│   └── token_optimization.md      # Token optimization strategies
 ├── requirements.txt
 └── README.md
 ```
 
-## 快速开始
+## Quick Start
 
 ```bash
-# 安装依赖
+# Install dependencies
 pip install -r requirements.txt
 
-# 配置 API 密钥
+# Configure API keys
 export ANTHROPIC_API_KEY="sk-ant-..."
 export OPENAI_API_KEY="sk-..."
 export GOOGLE_API_KEY="AIza..."
 export XIAOMI_MIMO_API_KEY="..."
 
-# 分析论文
+# Analyze a paper
 python -m src.analyzers.paper_analyzer --url https://arxiv.org/abs/2401.xxxxx
 
-# 生成代码
-python -m src.analyzers.code_generator --prompt "实现一个基于 Transformer 的时序预测模型"
+# Generate code
+python -m src.analyzers.code_generator --prompt "Implement a Transformer-based time series forecasting model"
 
-# 构建知识图谱
+# Build knowledge graph
 python -m src.analyzers.knowledge_graph --input papers/ --output graph.json
 ```
 
-## Token 消耗统计
+## Token Usage Statistics
 
-| 月份 | 总消耗 | 任务数 | 平均/任务 |
-|------|--------|--------|-----------|
-| 2026-04 | 12亿 Token | 2,400 | 500,000 |
-| 2026-05 | 60亿 Token（截至15日） | 12,000 | 500,000 |
+| Month | Total Usage | Tasks | Avg/Task |
+|-------|-------------|-------|----------|
+| 2026-04 | 1.2B tokens | 2,400 | 500,000 |
+| 2026-05 | 6.0B tokens (as of 15th) | 12,000 | 500,000 |
 
-## 使用场景
+## Use Cases
 
-1. **学术研究** — 快速理解大量论文，发现研究趋势
-2. **代码开发** — 基于论文快速实现算法原型
-3. **技术调研** — 多模型对比，选择最佳方案
-4. **知识管理** — 构建个人知识库，支持语义检索
+1. **Academic Research** — Quickly understand large volumes of papers, discover research trends
+2. **Code Development** — Rapidly implement algorithms from papers
+3. **Technology Research** — Multi-model comparison, choose optimal solutions
+4. **Knowledge Management** — Build personal knowledge base with semantic search
 
-## 贡献
+## Contributing
 
-欢迎提交 Issue 和 Pull Request！
+Issues and Pull Requests welcome!
 
-## 许可证
+## License
 
 MIT License

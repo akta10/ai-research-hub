@@ -1,49 +1,95 @@
-# AI Research Hub — 配置文件
+project:
+  name: ai-research-hub
+  version: 1.0.0
+  description: "Multi-model AI research assistant for automated paper analysis, code generation, and knowledge synthesis"
+  author: akta10
 
-# 模型配置
 models:
-  default: "claude-haiku"
-  fallback: "gemini-flash"
-  
   providers:
-    anthropic:
-      api_key_env: "ANTHROPIC_API_KEY"
-      models: ["claude-haiku", "claude-sonnet"]
-    openai:
-      api_key_env: "OPENAI_API_KEY"
-      models: ["gpt-4o", "gpt-4o-mini"]
-    google:
-      api_key_env: "GOOGLE_API_KEY"
-      models: ["gemini-flash", "gemini-pro"]
-    xiaomi:
-      api_key_env: "XIAOMI_MIMO_API_KEY"
-      models: ["mimo-v2.5"]
+    - name: anthropic
+      models:
+        - id: claude-haiku-4.5
+          name: Claude Haiku 4.5
+          cost_per_1k_input: 0.0008
+          cost_per_1k_output: 0.004
+          max_tokens: 200000
+          use_case: "Fast analysis, summarization"
+        - id: claude-sonnet-4
+          name: Claude Sonnet 4
+          cost_per_1k_input: 0.003
+          cost_per_1k_output: 0.015
+          max_tokens: 200000
+          use_case: "Deep analysis, complex reasoning"
 
-# 任务配置
-tasks:
-  paper_analysis:
-    preferred_model: "claude-sonnet"
-    max_tokens: 4000
-    temperature: 0.3
-  
-  code_generation:
-    preferred_model: "gpt-4o"
-    max_tokens: 8000
-    temperature: 0.7
-  
-  translation:
-    preferred_model: "gemini-flash"
-    max_tokens: 2000
-    temperature: 0.3
+    - name: openai
+      models:
+        - id: gpt-4o
+          name: GPT-4o
+          cost_per_1k_input: 0.0025
+          cost_per_1k_output: 0.01
+          max_tokens: 128000
+          use_case: "Code generation, multimodal"
+        - id: gpt-4o-mini
+          name: GPT-4o Mini
+          cost_per_1k_input: 0.00015
+          cost_per_1k_output: 0.0006
+          max_tokens: 128000
+          use_case: "Lightweight tasks, classification"
 
-# Token 限制
-limits:
-  max_daily_tokens: 10_000_000  # 1000万/天
-  max_monthly_tokens: 300_000_000  # 3亿/月
-  alert_threshold: 0.8  # 80% 时告警
+    - name: google
+      models:
+        - id: gemini-2.5-flash
+          name: Gemini 2.5 Flash
+          cost_per_1k_input: 0.00015
+          cost_per_1k_output: 0.0006
+          max_tokens: 1000000
+          use_case: "Multimodal, long context"
 
-# 输出配置
+    - name: xiaomi
+      models:
+        - id: mimo-v2.5-pro
+          name: MiMo v2.5 Pro
+          cost_per_1k_input: 0.001
+          cost_per_1k_output: 0.004
+          max_tokens: 128000
+          use_case: "Reasoning, math, coding"
+
+    - name: deepseek
+      models:
+        - id: deepseek-chat
+          name: DeepSeek Chat
+          cost_per_1k_input: 0.00014
+          cost_per_1k_output: 0.00028
+          max_tokens: 64000
+          use_case: "Chinese NLP, cost-effective"
+
+    - name: alibaba
+      models:
+        - id: qwen-max
+          name: Qwen Max
+          cost_per_1k_input: 0.004
+          cost_per_1k_output: 0.012
+          max_tokens: 32000
+          use_case: "Chinese understanding, instruction following"
+
+routing:
+  default_provider: anthropic
+  fallback_providers:
+    - openai
+    - google
+  task_type_mapping:
+    analysis: [anthropic, openai]
+    code_generation: [openai, anthropic]
+    chinese: [deepseek, alibaba]
+    multimodal: [google, openai]
+    reasoning: [xiaomi, anthropic]
+
+token_budget:
+  daily_limit: 200000000
+  monthly_limit: 6000000000
+  alert_threshold: 0.8
+
 output:
-  directory: "output"
-  format: "markdown"
-  language: "zh"
+  directory: ./output
+  format: markdown
+  save_raw: true

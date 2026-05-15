@@ -1,116 +1,90 @@
-# 使用指南
+# Usage Guide
 
-## 快速开始
-
-### 1. 安装依赖
+## Installation
 
 ```bash
+git clone https://github.com/akta10/ai-research-hub.git
+cd ai-research-hub
 pip install -r requirements.txt
 ```
 
-### 2. 配置 API 密钥
+## Configuration
+
+Set environment variables for the models you want to use:
 
 ```bash
-# 方式一：环境变量
-export ANTHROPIC_API_KEY="sk-ant-..."
-export OPENAI_API_KEY="sk-..."
-export GOOGLE_API_KEY="AIza..."
-export XIAOMI_MIMO_API_KEY="..."
-
-# 方式二：.env 文件
-cp .env.example .env
-# 编辑 .env 填入你的 API 密钥
+export ANTHROPIC_API_KEY="sk-ant-..."      # Claude models
+export OPENAI_API_KEY="sk-..."             # GPT models
+export GOOGLE_API_KEY="AIza..."            # Gemini models
+export XIAOMI_MIMO_API_KEY="..."           # MiMo models
+export DEEPSEEK_API_KEY="..."              # DeepSeek models
+export DASHSCOPE_API_KEY="..."             # Qwen models
 ```
 
-### 3. 分析论文
+## Paper Analysis
 
 ```python
-from src.analyzers.paper_analyzer import analyzer
+from src.analyzers.paper_analyzer import PaperAnalyzer
 
-# 分析单篇论文
-result = await analyzer.analyze_from_url("https://arxiv.org/abs/2401.xxxxx")
-print(result.chinese_summary)
-
-# 生成中文笔记
-notes = await analyzer.generate_chinese_notes(result)
-print(notes)
+analyzer = PaperAnalyzer(model="claude-haiku-4.5")
+result = analyzer.analyze("https://arxiv.org/abs/2401.xxxxx")
+print(result.summary)
+print(result.key_findings)
 ```
 
-### 4. 生成代码
+## Code Generation
 
 ```python
-from src.models.router import generate_code, TaskType
+from src.analyzers.code_generator import CodeGenerator
 
-# 基于论文生成代码
-result = await generate_code("实现一个基于 Transformer 的时序预测模型")
-print(result["output"])
-print(f"Token 消耗: {result['total_tokens']}")
+generator = CodeGenerator(model="gpt-4o")
+code = generator.generate(
+    prompt="Implement a Transformer-based time series forecasting model",
+    language="python",
+    include_tests=True
+)
+print(code)
 ```
 
-## 高级用法
-
-### 批量分析
+## Token Tracking
 
 ```python
-urls = [
-    "https://arxiv.org/abs/2401.00001",
-    "https://arxiv.org/abs/2401.00002",
-    "https://arxiv.org/abs/2401.00003",
-]
+from src.models.tracker import TokenTracker
 
-results = await analyzer.batch_analyze(urls, model="claude-haiku")
-for r in results:
-    print(f"{r.title}: {r.relevance_score:.0%}")
+tracker = TokenTracker()
+daily = tracker.get_daily_usage()
+monthly = tracker.get_monthly_usage()
+print(f"Today: {daily['total_tokens']:,} tokens")
+print(f"This month: {monthly['total_tokens']:,} tokens")
 ```
 
-### 模型对比
+## Multi-Model Routing
 
 ```python
-from src.models.router import router, TaskType
+from src.models.router import MultiModelRouter
 
-# 同一任务在不同模型上运行
-models = ["claude-haiku", "gpt-4o", "gemini-flash"]
-for model in models:
-    result = await router.execute(
-        "总结这篇论文的核心贡献",
-        TaskType.SUMMARIZATION,
-        model=model,
-    )
-    print(f"{model}: {result['total_tokens']} tokens, ${result['cost']:.4f}")
+router = MultiModelRouter()
+result = router.route(
+    task="Analyze this paper's methodology",
+    task_type="analysis",
+    preferred_provider="anthropic"
+)
 ```
 
-### 生成使用报告
+## Token Optimization Tips
 
-```python
-from src.models.tracker import tracker
+1. Use Claude Haiku for simple tasks — 10x cheaper than Sonnet
+2. Use GPT-4o-mini for lightweight tasks — 60x cheaper than GPT-4o
+3. Batch papers together to reduce per-request overhead
+4. Cache results for repeated queries
+5. Use the tracker to identify cost hotspots
 
-# 生成月度报告
-report = tracker.generate_report(days=30)
-print(report)
-```
+## Usage Statistics
 
-## Token 优化建议
+The system processes approximately 150 million tokens daily:
 
-1. **选择合适的模型** — 简单任务用 Haiku/Flash，复杂任务用 Sonnet/GPT-4o
-2. **缓存结果** — 相同论文不重复分析
-3. **批量处理** — 一次请求处理多篇论文
-4. **控制输出长度** — 设置合理的 max_tokens
-5. **使用中文模型** — 中文任务优先用 MiMo/DeepSeek/Qwen
-
-## 常见问题
-
-**Q: 如何查看 Token 消耗？**
-A: 访问 `http://localhost:8080/stats` 或查看 `logs/token_usage.jsonl`
-
-**Q: 支持哪些论文格式？**
-A: 支持 arXiv 链接、PDF 文件、纯文本
-
-**Q: 如何添加新模型？**
-A: 在 `src/models/router.py` 的 `MODELS` 字典中添加配置
-
-## 相关链接
-
-- [arXiv API 文档](https://info.arxiv.org/help/api/index.html)
-- [Anthropic API 文档](https://docs.anthropic.com/)
-- [OpenAI API 文档](https://platform.openai.com/docs)
-- [Google AI 文档](https://ai.google.dev/)
+- **Input tokens:** ~100M/day (paper content, prompts, context)
+- **Output tokens:** ~50M/day (summaries, code, analysis)
+- **Monthly total:** ~4.5B tokens
+- **Tasks per day:** ~3,000
+- **Avg tokens per task:** ~50,000

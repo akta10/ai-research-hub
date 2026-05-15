@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AI Research Hub</title>
+<meta name="description" content="Multi-model AI research assistant — automated paper analysis, code generation, and knowledge synthesis"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:#030712;color:#e5e7eb;min-height:100vh}
+.hero{text-align:center;padding:6rem 1.5rem 4rem;max-width:64rem;margin:0 auto}
+.badge{display:inline-block;padding:.375rem 1rem;border-radius:9999px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);color:#60a5fa;font-size:.875rem;margin-bottom:2rem}
+h1{font-size:3rem;font-weight:700;letter-spacing:-.025em;margin-bottom:1.5rem;line-height:1.1}
+h1 span{color:#60a5fa}
+.subtitle{font-size:1.25rem;color:#9ca3af;max-width:40rem;margin:0 auto 2.5rem;line-height:1.625}
+.subtitle strong{color:#fff;font-weight:600}
+.btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{padding:.75rem 1.5rem;border-radius:.5rem;font-weight:500;text-decoration:none;transition:all .15s;font-size:.95rem}
+.btn-primary{background:#fff;color:#111827}.btn-primary:hover{background:#f3f4f6}
+.btn-secondary{border:1px solid #374151;color:#e5e7eb}.btn-secondary:hover{border-color:#6b7280}
+.stats{border-top:1px solid #1f2937;border-bottom:1px solid #1f2937;background:rgba(17,24,39,.5);padding:3rem 1.5rem}
+.stats-inner{max-width:64rem;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-num{font-size:1.875rem;font-weight:700;color:#60a5fa}
+.stat-label{font-size:.875rem;color:#6b7280;margin-top:.25rem}
+.section{max-width:64rem;margin:0 auto;padding:5rem 1.5rem}
+.section h2{font-size:1.875rem;font-weight:700;text-align:center;margin-bottom:4rem}
+.features{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.feature{padding:1.5rem;border-radius:.75rem;background:rgba(30,41,59,.5);border:1px solid rgba(55,65,81,.5)}
+.feature-icon{font-size:1.5rem;margin-bottom:1rem}
+.feature h3{font-size:1.25rem;font-weight:600;margin-bottom:.75rem}
+.feature p{color:#9ca3af;line-height:1.625}
+.models{background:rgba(17,24,39,.5);border-top:1px solid #1f2937;border-bottom:1px solid #1f2937}
+.model-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.model{padding:1rem;border-radius:.5rem;border:1px solid rgba(55,65,81,.5);background:rgba(30,41,59,.3)}
+.model.featured{border-color:rgba(59,130,246,.5);background:rgba(59,130,246,.05)}
+.model-name{font-weight:500;font-size:.875rem}
+.model-provider{font-size:.75rem;color:#6b7280;margin-top:.25rem}
+.model-use{font-size:.75rem;color:#9ca3af;margin-top:.5rem}
+.arch-box{background:rgba(30,41,59,.5);border:1px solid rgba(55,65,81,.5);border-radius:.75rem;padding:2rem;font-family:monospace;font-size:.875rem;color:#d1d5dc;overflow-x:auto;white-space:pre}
+footer{border-top:1px solid #1f2937;padding:2.5rem;text-align:center;font-size:.875rem;color:#6b7280}
+footer a{color:#9ca3af;text-decoration:none}.footer a:hover{color:#fff}
+@media(max-width:768px){.stats-inner{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:1fr}.model-grid{grid-template-columns:repeat(2,1fr)}h1{font-size:2.25rem}}
+</style>
+</head>
+<body>
+
+<section class="hero">
+<div class="badge">Multi-Model AI Research Platform</div>
+<h1>AI Research <span>Hub</span></h1>
+<p class="subtitle">Automated paper analysis, code generation, and knowledge synthesis powered by 8 AI models across 6 providers. Processing <strong>150M+ tokens daily</strong>.</p>
+<div class="btn-row">
+<a href="https://github.com/akta10/ai-research-hub" target="_blank" class="btn btn-primary">View on GitHub</a>
+<a href="#features" class="btn btn-secondary">Learn More</a>
+</div>
+</section>
+
+<section class="stats">
+<div class="stats-inner">
+<div><div class="stat-num">150M+</div><div class="stat-label">Tokens / Day</div></div>
+<div><div class="stat-num">8</div><div class="stat-label">AI Models</div></div>
+<div><div class="stat-num">3B+</div><div class="stat-label">Tokens / Month</div></div>
+<div><div class="stat-num">1,500+</div><div class="stat-label">Tasks / Day</div></div>
+</div>
+</section>
+
+<section class="section" id="features">
+<h2>Core Capabilities</h2>
+<div class="features">
+<div class="feature">
+<div class="feature-icon">📄</div>
+<h3>Paper Analysis</h3>
+<p>Input arXiv paper URLs, get structured summaries with key algorithms, experimental results, and innovation points extracted automatically. Batch processing for 10+ papers.</p>
+</div>
+<div class="feature">
+<div class="feature-icon">💻</div>
+<h3>Code Generation</h3>
+<p>Generate runnable code from paper descriptions in Python, TypeScript, or Solidity. Auto-includes test cases, documentation, and quality scoring.</p>
+</div>
+<div class="feature">
+<div class="feature-icon">🔗</div>
+<h3>Knowledge Graphs</h3>
+<p>Extract entity relationships from papers, build concept dependency graphs, and discover cross-domain knowledge connections automatically.</p>
+</div>
+<div class="feature">
+<div class="feature-icon">📊</div>
+<h3>Multi-Model Evaluation</h3>
+<p>Run the same task across Claude, GPT, Gemini, MiMo, DeepSeek, and Qwen. Compare quality, latency, and cost. Get model selection recommendations.</p>
+</div>
+</div>
+</section>
+
+<section class="section models">
+<h2>Supported Models</h2>
+<div class="model-grid">
+<div class="model"><div class="model-name">Claude Haiku 4.5</div><div class="model-provider">Anthropic</div><div class="model-use">Fast analysis</div></div>
+<div class="model"><div class="model-name">Claude Sonnet 4</div><div class="model-provider">Anthropic</div><div class="model-use">Deep analysis</div></div>
+<div class="model"><div class="model-name">GPT-4o</div><div class="model-provider">OpenAI</div><div class="model-use">Code generation</div></div>
+<div class="model"><div class="model-name">GPT-4o-mini</div><div class="model-provider">OpenAI</div><div class="model-use">Light tasks</div></div>
+<div class="model"><div class="model-name">Gemini Flash</div><div class="model-provider">Google</div><div class="model-use">Multimodal</div></div>
+<div class="model featured"><div class="model-name">MiMo v2.5 Pro ★</div><div class="model-provider">Xiaomi</div><div class="model-use">Reasoning</div></div>
+<div class="model"><div class="model-name">DeepSeek Chat</div><div class="model-provider">DeepSeek</div><div class="model-use">Chinese NLP</div></div>
+<div class="model"><div class="model-name">Qwen Max</div><div class="model-provider">Alibaba</div><div class="model-use">Chinese</div></div>
+</div>
+</section>
+
+<section class="section">
+<h2>Architecture</h2>
+<div class="arch-box">
+┌──────────────────────────────────────────┐
+│            Research Interface            │
+├───────────┬───────────┬──────────────────┤
+│   Paper   │   Code    │   Knowledge      │
+│  Analysis │   Gen     │   Graph          │
+├───────────┴───────────┴──────────────────┤
+│          Multi-Model Router              │
+├────────┬────────┬────────┬───────────────┤
+│ Claude │  GPT   │ Gemini │ MiMo / DeepSk │
+│ Haiku  │  4o    │ Flash  │ v2.5 / Chat   │
+└────────┴────────┴────────┴───────────────┘
+</div>
+</section>
+
+<footer>
+<p>AI Research Hub — Built with MiMo, Claude, GPT, Gemini &amp; more</p>
+<p style="margin-top:.5rem"><a href="https://github.com/akta10/ai-research-hub" target="_blank">GitHub</a></p>
+</footer>
+
+</body>
+</html>
